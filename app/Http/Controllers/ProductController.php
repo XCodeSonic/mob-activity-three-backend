@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-     public function firstProduct($id)
+    public function firstProduct($id)
     {
         $product = Product::where('id', $id)->first();
 
@@ -26,7 +26,7 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-    public function createProduct(Request $request)
+    public function createProduct(Request $request) 
     {
         $data = $request->validate([
             'name' => ['required', 'string'],
@@ -50,4 +50,21 @@ class ProductController extends Controller
             'message' => 'Product created successfully'
         ]);
     }
+
+    // public function deleteProduct($id)
+    // {
+    //     $product = Product::find($id);
+
+    //     if (!$product) {
+    //         return response()->json([
+    //             'message' => '404 not found'
+    //         ]);
+    //     }
+
+    //     $product->delete();
+
+    //     return response()->json([
+    //         'message' => 'Product soft deleted successfully'
+    //     ]);
+    // }
 }
